@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ubiquitous-octo-waffle1';
+  title = 'ubiquitous-octo-waffle';
 }
