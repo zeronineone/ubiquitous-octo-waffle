@@ -30,7 +30,7 @@ export class ParticlesBgComponent implements OnInit {
   }
 
   particlesOptions = tunnel;
-  //particlesOptions = hexagonPath;
+  //particlesOptions = hexagonPath ;
   //particlesOptions= default_theme;
 
 }
