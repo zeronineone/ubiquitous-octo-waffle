@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: Roboto-Black;
+    src: url(../src/assets/fonts/Roboto/Roboto-Black.ttf);
+}
+@font-face {
+    font-family: Roboto-Medium;
+    src: url(../src/assets/fonts/Roboto/Roboto-Medium.ttf);
+}
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(../src/assets/fonts/Roboto/Roboto-Bold.ttf);
+}
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(../src/assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: RobotoMono-SemiBold;
+    src: url(../src/assets/fonts/Roboto_Mono/static/RobotoMono-SemiBold.ttf);
+}
+@font-face {
+    font-family: RobotoMono-Medium;
+    src: url(../src/assets/fonts/Roboto_Mono/static/RobotoMono-Medium.ttf);
+}
+@font-face {
+    font-family: RobotoMono-Bold;
+    src: url(../src/assets/fonts/Roboto_Mono/static/RobotoMono-Bold.ttf);
+}
+@font-face {
+    font-family: RobotoMono-Regular;
+    src: url(../src/assets/fonts/Roboto_Mono/static/RobotoMono-Regular.ttf);
+}
+@font-face {
+    font-family: RedHatMono-Regular;
+    src: url(../src/assets/fonts/Red_Hat_Mono/static/RedHatMono-Regular.ttf);
+}
+@font-face {
+    font-family: RedHatMono-Medium;
+    src: url(../src/assets/fonts/Red_Hat_Mono/static/RedHatMono-Medium.ttf);
+}
+@font-face {
+    font-family: RedHatMono-Bold;
+    src: url(../src/assets/fonts/Red_Hat_Mono/static/RedHatMono-Bold.ttf);
+}
+
+
+body {
+    margin: 0!important;
+    padding: 0!important;
+    font-family: RedHatMono-Medium ;
+    font-size: 16px ;
+}
