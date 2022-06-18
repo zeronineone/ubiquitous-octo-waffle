@@ -13,6 +13,7 @@ export class PInputComponent implements OnInit {
   emailLabel =  "Enter your email";
   passwordLabel = "Create a password";
   userNameLabel = "Enter a username";
+  continueLabel = "Continue";
   faArrowRight = faArrowRight;
   faCheck = faCheck;
   faXmark = faXmark;

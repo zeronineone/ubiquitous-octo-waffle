@@ -7,7 +7,7 @@
 .input-area{
     display: block;
     position: relative;
-    height: 65%;
+    height: auto;
     width: 35%;
     left: calc((100% - 35% ) / 2 );
     top: 20%;

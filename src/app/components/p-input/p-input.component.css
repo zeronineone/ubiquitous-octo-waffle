@@ -57,9 +57,14 @@
     display: flex;
     align-items: flex-end;
 }
-.error-inout-icon{
+.inout-fa-arrow-right-icon{
     color : #ea4aaa;
-    
+}
+.inout-fa-check-icon{
+    color : #2da44e;
+}
+.inout-fa-xmark-icon{
+    color : #ea4aaa;
 }
 .input-area{
     background: transparent;
@@ -80,6 +85,32 @@
 .input-area:focus-visible{
     border: 1px solid #0969da !important;
 }
-.email-input{
-
+.continue-button{
+    background: blueviolet;
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: middle;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    /*
+    transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: color,background-color,box-shadow,border-color;
+    */
+}
+.continue-button-disabled{
+    color: #627597;
+    background: none;
+    border: 1px solid #627597;
+}
+.continue-button-enabled{
+    color: #2da44e ;
+    background: none;
+    border: 1px solid #2da44e;
 }
