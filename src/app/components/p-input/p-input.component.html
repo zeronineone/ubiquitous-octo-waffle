@@ -6,29 +6,17 @@
         <div class="input-text">{{subText}}</div>
     </div>
     <form>
-    <div class="input-label-value-wrapper">
-        <div class="input-text input-label-text">{{emailLabel}}</div>
+    <div *ngFor="let displayConfig of displayConfigs; let i = index;"   class="input-label-value-wrapper">
+        <div *ngIf="displayConfig.isVisible">
+        <div class="input-text input-label-text">{{displayConfig.label}}</div>
         <div class="input-icon input-icon-email"> 
-            <fa-icon class="inout-fa-arrow-right-icon" [icon]="faArrowRight"></fa-icon>
-         <!--   <fa-icon class="inout-fa-check-icon" [icon]="faCheck"></fa-icon>
-            <fa-icon class="inout-fa-xmark-icon" [icon]="faXmark"></fa-icon>-->
+            <fa-icon *ngIf="displayConfig.inputStatus[0]" class="inout-fa-arrow-right-icon" [icon]="faArrowRight"></fa-icon>
+            <fa-icon *ngIf="displayConfig.inputStatus[1]" class="inout-fa-check-icon" [icon]="faCheck"></fa-icon>
+            <fa-icon *ngIf="displayConfig.inputStatus[2]" class="inout-fa-xmark-icon" [icon]="faXmark"></fa-icon>
             <input type=text class="input-area email-input"/>
         </div>
-    </div>
-    <div class="input-label-value-wrapper">
-        <div class="input-text input-label-text">{{passwordLabel}}</div>
-        <div class="input-icon input-icon-email"> 
-            <fa-icon class="inout-fa-arrow-right-icon" [icon]="faArrowRight"></fa-icon>
-            <input type=password class="input-area email-input"/>
-        </div>
-    </div>
-    <div class="input-label-value-wrapper">
-        <div class="input-text input-label-text">{{userNameLabel}}</div>
-        <div class="input-icon input-icon-email"> 
-            <fa-icon class="inout-fa-arrow-right-icon" [icon]="faArrowRight"></fa-icon>
-            <input type=text class="input-area email-input"/>
+        <div *ngIf="displayConfig.isContinueVisible" class="continue-button continue-button-enabled" (click)="continueService(i)" >{{continueLabel}}</div>
         </div>
     </div>
 </form>
-<div class="continue-button continue-button-enabled">{{continueLabel}}</div>
 </div>

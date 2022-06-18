@@ -64,7 +64,7 @@
     color : #2da44e;
 }
 .inout-fa-xmark-icon{
-    color : #ea4aaa;
+    color : #fa4549;
 }
 .input-area{
     background: transparent;
@@ -99,6 +99,7 @@
     vertical-align: middle;
     padding-right: 16px !important;
     padding-left: 16px !important;
+    cursor: pointer;
     /*
     transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
     transition-property: color,background-color,box-shadow,border-color;
