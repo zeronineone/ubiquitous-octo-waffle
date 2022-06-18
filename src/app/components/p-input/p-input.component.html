@@ -1,7 +1,31 @@
 <div class="input-container">
-    <div class="input-title-text-wrapper">
-    <div class="input-text input-title-text">{{titleText}}</div>
-    <div class="input-cursor"> </div>
+    <div class="input-text-heading-wrapper">
+        <div class="input-text">{{titleText}}</div>
     </div>
-   <!--<div class="input-text input-sub-text">{{subText}}</div>--> 
+    <div class="input-text-heading-wrapper">
+        <div class="input-text">{{subText}}</div>
+    </div>
+    <form>
+    <div class="input-label-value-wrapper">
+        <div class="input-text input-label-text">{{emailLabel}}</div>
+        <div class="input-icon input-icon-email error-inout-icon"> 
+            <fa-icon [icon]="faArrowRight"></fa-icon>
+            <input type=text class="input-area email-input"/>
+        </div>
+    </div>
+    <div class="input-label-value-wrapper">
+        <div class="input-text input-label-text">{{passwordLabel}}</div>
+        <div class="input-icon input-icon-email error-inout-icon"> 
+            <fa-icon [icon]="faArrowRight"></fa-icon>
+            <input type=password class="input-area email-input"/>
+        </div>
+    </div>
+    <div class="input-label-value-wrapper">
+        <div class="input-text input-label-text">{{userNameLabel}}</div>
+        <div class="input-icon input-icon-email error-inout-icon"> 
+            <fa-icon [icon]="faArrowRight"></fa-icon>
+            <input type=text class="input-area email-input"/>
+        </div>
+    </div>
+</form>
 </div>

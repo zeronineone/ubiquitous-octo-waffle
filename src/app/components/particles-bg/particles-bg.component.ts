@@ -29,8 +29,8 @@ export class ParticlesBgComponent implements OnInit {
     await loadFull(engine);
   }
 
-  particlesOptions = tunnel;
+  //particlesOptions = tunnel;
   //particlesOptions = hexagonPath ;
-  //particlesOptions= default_theme;
+  particlesOptions= default_theme;
 
 }

@@ -1,15 +1,9 @@
 :root {
     --color-shadow-small: 0 1px 0 rgba(27,31,36,0.04);
-    --color-fg-default: #24292f;
+    --padding : 3px 0px 0px 3px; /*T R B L*/
+    --p-24-px : 24px !important;
 }
-@keyframes typing {
-    from { width: 0 }
-    to { width: 35% }
-  }
-  @keyframes blink-cursor {
-    from, to { border-color: transparent }
-    50% { border-color: #627597 }
-  }
+
 .input-container{
     display: block;
     position: relative;
@@ -20,25 +14,31 @@
     box-shadow: var(--color-shadow-small) !important;
     border-radius: 6px !important;
     box-sizing: border-box;
+    padding: var(--p-24-px);
 }
-.input-title-text-wrapper{
+.input-text-heading-wrapper{
     display: block;
     width: 100%;
-    height: 14%;
-    padding-left: 1%;
+    padding: var(--padding);
 }
 .input-text{
     color: #627597;
     overflow: hidden;
     line-height: 1.5;
-    letter-spacing: .15em;
     margin: 0 auto;
     word-wrap: break-word;
     white-space: nowrap;
-    animation: typing 2s steps(20) forwards;
     display: inline-block;
     position: relative;
 }
+.input-label-value-wrapper{
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: var(--padding);
+    padding-top: var(--p-24-px);
+}
+
 .input-cursor{
     display: inline-block;
     border-bottom: 2px #627597 solid;
@@ -46,15 +46,40 @@
     height: 100%;
     animation: blink-cursor .5s step-end infinite;
 }
-.input-title-text{
 
+.input-label-text{
+    color: #00cfc8;
 }
-.input-sub-text{
+.input-icon {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+}
+.error-inout-icon{
+    color : #ea4aaa;
+    
+}
+.input-area{
+    background: transparent;
+    background-color: #0c162d;
+    -webkit-text-fill-color: #fff;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    display: block;
+    position: relative;
+    width: 70%;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 6px
+} 
 
+.input-area:focus-visible{
+    border: 1px solid #0969da !important;
 }
-.input-question-text{
-
-}
-.input-answer-box{
+.email-input{
 
 }

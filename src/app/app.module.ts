@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParticlesBgComponent } from './components/particles-bg/particles-bg.component';
 import { PInputComponent } from './components/p-input/p-input.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PInputComponent } from './components/p-input/p-input.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgParticlesModule
+    NgParticlesModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
