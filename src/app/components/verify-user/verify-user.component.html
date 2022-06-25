@@ -1,0 +1,16 @@
+<div (paste)="onPaste($event)" class="verify-user-container">
+    <div class="input-text-heading-wrapper">
+        <div class="input-text">{{titleText}}</div>
+    </div>
+    <div class="input-text-heading-wrapper">
+        <div class="input-text">{{subText}} <span class="user-email">{{userEmail}}</span></div>
+    </div>
+    <div class="input-text-heading-wrapper">
+        <fa-icon class="inout-fa-arrow-right-icon" [icon]="faArrowRight"></fa-icon>
+        <div class="input-text user-code-head">Enter code </div>
+    </div>
+    <div class="input-code-wrapper">
+        <input *ngFor="let digit of otpDigits" class="input-digit" (keyup)="onDigitInput($event)" 
+        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" />
+    </div>
+</div>

@@ -1,6 +1,8 @@
 <div class="container">
-<app-particles-bg></app-particles-bg>
+<app-particles-bg> [backgroundActionType]="backgroundActionType"</app-particles-bg>
 <div class="input-area">
-<app-p-input></app-p-input>
+<!-- <app-p-input (updateBgEvent)="updateBgEvent($event)"></app-p-input>  
+<app-verify-user></app-verify-user>-->
+<router-outlet></router-outlet>
 </div>
 </div>

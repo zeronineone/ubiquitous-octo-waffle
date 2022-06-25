@@ -1,0 +1,99 @@
+:root {
+    --color-shadow-small: 0 1px 0 rgba(27,31,36,0.04);
+    --padding : 3px 0px 0px 3px; /*T R B L*/
+    --p-24-px : 24px !important;
+}
+
+.verify-user-container{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #0c162d;
+    border: 1px solid #202637;
+    box-shadow: var(--color-shadow-small) !important;
+    border-radius: 6px !important;
+    box-sizing: border-box;
+    padding: var(--p-24-px);
+}
+.input-text-heading-wrapper{
+    display: block;
+    width: 100%;
+    padding: var(--padding);
+}
+.input-text{
+    color: #ffffff;
+    overflow: hidden;
+    line-height: 1.5;
+    margin: 0 auto;
+    word-wrap: break-word;
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+}
+.input-icon {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+}
+.user-email{
+    color: #0dbc79;
+}
+.user-code-head{
+    color : #ea4aaa;
+}
+.inout-fa-arrow-right-icon{
+    color : #627597;
+}
+.input-code-wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    height: 39%;
+}
+.input-digit{
+    width: calc( ( 80% / 8 ));
+    margin: auto;
+    min-height: 50px;
+    display: block;
+    background: transparent;
+    -webkit-text-fill-color: #fff;
+    box-shadow: none !important;
+    border-radius: 6px !important;
+    border: 1px solid #30363d;
+    font-size: 24px !important;
+    background-color: #0c162d;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    color:  #ffffff !important;
+    box-shadow: 0 0 transparent !important;
+    line-height: 20px;
+    outline: none;
+    
+}
+.input-area{
+    background: transparent;
+    background-color: #0c162d;
+    -webkit-text-fill-color: #fff;
+    box-shadow: none !important;
+    border-radius: 6px !important;
+    border: 0 !important;
+    display: block;
+    position: relative;
+    width: 70%;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 6px;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    caret-color: #fff;
+} 

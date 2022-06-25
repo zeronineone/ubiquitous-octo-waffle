@@ -1,0 +1,5 @@
+{
+    "backgrounds" : ["backgrounds/particles-colors.json","backgrounds/particles-confetti-explosions.json","backgrounds/particles-confetti.json","particles-fireworks.json",
+        "particles-hexagons.json","particles-light.json","particles-side-confetti.json","particles-starry.json","particles-tunnel.json"],
+    "loadings" :[]
+}

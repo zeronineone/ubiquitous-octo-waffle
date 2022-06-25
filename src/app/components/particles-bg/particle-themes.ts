@@ -1,5 +1,6 @@
-import { MoveDirection, ClickMode, HoverMode, OutMode } from "tsparticles-engine";
-export const default_theme  = {
+import { MoveDirection, ClickMode, HoverMode, OutMode, Bounce, CollisionMode, DestroyMode, DestroyType, StartValueType, RollMode, RotateDirection, TiltDirection } from "tsparticles-engine";
+
+  export const default_theme  = {
     fullScreen: {
         zIndex: -1
       },
@@ -46,7 +47,7 @@ export const default_theme  = {
         enable: false
       },
       move: {
-        direction: MoveDirection.outside,
+        direction: MoveDirection.none,
         enable: true,
         outModes: {
           default: OutMode.out
@@ -60,7 +61,7 @@ export const default_theme  = {
           enable: true,
           area: 800
         },
-        value: 500
+        value: 100
       },
       opacity: {
         value: 0.5
