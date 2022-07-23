@@ -52,6 +52,7 @@ export class ParticlesBgComponent implements OnInit {
 updateBgEvent(backgroundAction : BackgroundAction){
   console.log("particles comp this.backgroundAction "+backgroundAction)  
   console.log("----");
+  
   if(backgroundAction == BackgroundAction.SIGNUP){
     this.particlesOptions= this.particlesBgService.getUserFormConfigs();
   }else if(backgroundAction == BackgroundAction.JOURNY_TO_PERSONAL_SPACE){
