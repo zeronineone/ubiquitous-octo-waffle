@@ -11,6 +11,7 @@ import { ParticlesBgComponent } from './components/particles-bg/particles-bg.com
 import { PInputComponent } from './components/p-input/p-input.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { PersonalSpaceComponent } from './components/personal-space/personal-space.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PersonalSpaceComponent } from './components/personal-space/personal-spa
     ParticlesBgComponent,
     PInputComponent,
     VerifyUserComponent,
-    PersonalSpaceComponent
+    PersonalSpaceComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

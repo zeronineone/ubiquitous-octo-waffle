@@ -14,7 +14,7 @@
     box-shadow: var(--color-shadow-small) !important;
     border-radius: 6px !important;
     box-sizing: border-box;
-    padding: var(--p-24-px);
+    padding : 10px;
 }
 .input-text-heading-wrapper{
     display: block;

@@ -16,16 +16,13 @@ export interface Status{
     message: string;
     type: StatusType;
 }
-export interface CreateUserRequest{
-    username: string;
-    userpassword: string;
-    useremail: string;
-}
 
 export interface CreateUserResponse{
     status: Status;
 }
-
+export interface CreateUserRequest{    
+    useremail: string;
+}
 export enum BackgroundAction{
     LOGIN = 1,
     SIGNUP ,

@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class UserDetailsService {
+export class UserService {
 
   constructor(private http:HttpClient) { }
   statusRes: Status | undefined

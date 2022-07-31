@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,11 +9,14 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export class VerifyUserComponent implements OnInit {
 
   constructor() { }
+ // @Input()
+  userEmail : string | undefined 
   titleText : string = "You're almost done!"
   subText : string = "We sent a launch code to "
-  userEmail : string = "shub.singh091@gmail.com"
+ 
   faArrowRight = faArrowRight;
   ngOnInit(): void {
+    this.userEmail = history.state['userEmail'];
   }
   otpDigits = [1,2,3,4,5,6,7,8];
 

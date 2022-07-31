@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 import { PInputComponent } from './components/p-input/p-input.component';
 import { PersonalSpaceComponent } from './components/personal-space/personal-space.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 
 const routes: Routes = [
-  { path: '', 
-    component: PInputComponent,
-   // canActivate:true
+  { path: 'login', component: LoginComponent,
+    children : [
+      {path:'verify',component: VerifyUserComponent},
+      {path:'input',component: PInputComponent}//,
+   //   {path:'',component: PInputComponent}
+    ],
   },
-  { path: '', component: PersonalSpaceComponent },
+  //{path:'login',component: PInputComponent},
+ // { path: '', component: PersonalSpaceComponent },
   { path: 'createspace', component: PInputComponent },
   { path: 'launchcode', component: VerifyUserComponent },
   { path: 'space', component: PersonalSpaceComponent }
