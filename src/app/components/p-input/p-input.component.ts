@@ -6,6 +6,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { InputServiceService } from 'src/app/services/input-service.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-p-input',
@@ -18,7 +19,8 @@ export class PInputComponent implements OnInit {
 
   inputComponentDataI : InputComponentData | undefined;
 
- 
+  questionLabelSub: Subscription | undefined;
+  
   faArrowRight = faArrowRight;
   faCheck = faCheck;
   faXmark = faXmark;
@@ -44,6 +46,11 @@ export class PInputComponent implements OnInit {
   ngOnInit(): void {
     console.log(history.state);
     this.inputComponentDataI = history.state;
+
+   // this.questionLabelSub = this.inputServiceService.getQuestionLabels().subscribe((value : any)=>{
+    //  console.log(value)
+     // this.inputComponentDataI = value;
+     //  })
     /*this.route.data.subscribe(data => {
       console.log(data);
   }) */
@@ -81,7 +88,7 @@ export class PInputComponent implements OnInit {
  //  if(this.parentFunction){
   //  this.parentFunction();
   // }
-  this.inputServiceService.buttonClicked.next(capturedFormData.value);
+  this.inputServiceService.capturedDataSubject.next(capturedFormData.value);
   }
    
 

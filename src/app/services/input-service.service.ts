@@ -8,9 +8,11 @@ export class InputServiceService {
 
   constructor() { }
 
-  buttonClicked = new Subject();
+  capturedDataSubject = new Subject();
 
-  getButtonClicked(){
-    return this.buttonClicked.asObservable();
+
+  getCapturedData(){
+    return this.capturedDataSubject.asObservable();
   }
+
 }

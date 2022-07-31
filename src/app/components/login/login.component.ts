@@ -48,10 +48,12 @@ export class LoginComponent implements OnInit {
         site: 'edupala.com',
       },
  });*/
- this.buttomnClickedSubscription = this.inputServiceService.getButtonClicked().subscribe((value)=>{
+ this.buttomnClickedSubscription = this.inputServiceService.getCapturedData().subscribe((value)=>{
  console.log(value)
  this.captureDataFromInputCompotent(value);
   })
+
+  
  this.router.navigateByUrl("/login/input", { state: this.inputComponentData });
   }
 
