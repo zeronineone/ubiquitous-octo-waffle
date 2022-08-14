@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WindowsComponent } from './components/windows/windows.component';
 import { ViewComponent } from './components/view/view.component';
 import { CredentialsComponent } from './components/types/credentials/credentials.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { CredentialsComponent } from './components/types/credentials/credentials
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
