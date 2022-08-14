@@ -12,6 +12,9 @@ import { PInputComponent } from './components/p-input/p-input.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
 import { PersonalSpaceComponent } from './components/personal-space/personal-space.component';
 import { LoginComponent } from './components/login/login.component';
+import { WindowsComponent } from './components/windows/windows.component';
+import { ViewComponent } from './components/view/view.component';
+import { CredentialsComponent } from './components/types/credentials/credentials.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { LoginComponent } from './components/login/login.component';
     PInputComponent,
     VerifyUserComponent,
     PersonalSpaceComponent,
-    LoginComponent
+    LoginComponent,
+    WindowsComponent,
+    ViewComponent,
+    CredentialsComponent
   ],
   imports: [
     BrowserModule,

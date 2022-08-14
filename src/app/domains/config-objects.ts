@@ -29,3 +29,7 @@ export enum BackgroundAction{
     JOURNY_TO_PERSONAL_SPACE,
     PERSONAL_SPACE
 }
+
+export interface User{
+    
+}

@@ -1,0 +1,7 @@
+<div class="views-container">
+    <div class="display-text" *ngFor="let details of displayConfig | keyvalue;">
+        <div class="display-label-text">{{details.key}}</div>
+        <div class="display-label-text">&nbsp;:&nbsp;</div>
+        <div class="display-value-text">{{details.value}}</div>
+    </div>
+</div>

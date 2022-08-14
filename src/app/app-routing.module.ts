@@ -3,7 +3,10 @@ import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PInputComponent } from './components/p-input/p-input.component';
 import { PersonalSpaceComponent } from './components/personal-space/personal-space.component';
+import { CredentialsComponent } from './components/types/credentials/credentials.component';
 import { VerifyUserComponent } from './components/verify-user/verify-user.component';
+import { ViewComponent } from './components/view/view.component';
+import { WindowsComponent } from './components/windows/windows.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent,
@@ -17,7 +20,7 @@ const routes: Routes = [
  // { path: '', component: PersonalSpaceComponent },
   { path: 'createspace', component: PInputComponent },
   { path: 'launchcode', component: VerifyUserComponent },
-  { path: 'space', component: PersonalSpaceComponent }
+  { path: 'space', component: PersonalSpaceComponent },
 ];
 
 @NgModule({

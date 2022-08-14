@@ -1,0 +1,25 @@
+.views-container{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #0c162d;
+    border: 1px solid #202637;
+    box-shadow: var(--color-shadow-small) !important;
+    border-radius: 6px !important;
+    box-sizing: border-box;
+    padding: 10px;
+
+}
+.display-label-text{
+    color: #00cfc8;
+}
+.display-value-text{
+    color: #ffffff;
+}
+.display-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+}

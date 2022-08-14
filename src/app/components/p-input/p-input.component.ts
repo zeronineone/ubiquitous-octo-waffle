@@ -17,7 +17,7 @@ export class PInputComponent implements OnInit {
 
   //@Input()  inputComponentDataI : InputComponentData | undefined;
 
-  inputComponentDataI : InputComponentData | undefined;
+  @Input() inputComponentDataI : InputComponentData | undefined;
 
   questionLabelSub: Subscription | undefined;
   
@@ -45,7 +45,9 @@ export class PInputComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(history.state);
-    this.inputComponentDataI = history.state;
+    if(Object.keys(history.state).length > 1){
+      this.inputComponentDataI = history.state;
+    }
 
    // this.questionLabelSub = this.inputServiceService.getQuestionLabels().subscribe((value : any)=>{
     //  console.log(value)
