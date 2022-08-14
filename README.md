@@ -36,5 +36,7 @@ ssh -i /Users/apple/znoLogins/znoui.pem ubuntu@13.234.31.179
 
 sudo apt update
 sudo apt install nodejs npm
+npm install --global lite-server
 
-ng build --base-href /ubiquitous-octo-waffle
+
+ng build 
