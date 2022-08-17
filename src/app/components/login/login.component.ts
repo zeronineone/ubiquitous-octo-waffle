@@ -8,6 +8,7 @@ import {  Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { PInputComponent } from '../p-input/p-input.component';
 import { InputServiceService } from 'src/app/services/input-service.service';
 import { Subscription } from 'rxjs';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ import { Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private inputServiceService: InputServiceService,private userDetailsService: UserService,private route: ActivatedRoute,private router: Router) { }
+  constructor(private inputServiceService: InputServiceService,private authServiceService: AuthServiceService,private userDetailsService: UserService,private route: ActivatedRoute,private router: Router) { }
   inputComponentData : InputComponentData | undefined
   buttomnClickedSubscription: Subscription | undefined;
   ngOnInit(): void {
@@ -24,9 +25,10 @@ export class LoginComponent implements OnInit {
       titleText: 'Welcome to local host',
       subText: 'Enjoy your space',
       createAccountLabel: "Let's go!!",
+      nextUrl:"getOtp",
       inputBlockConfigs: [
         {
-          name: "useremail",
+          name: "userEmail",
           label: "Enter your email",
           type: "text",
           isVisible : true,
@@ -82,14 +84,23 @@ export class LoginComponent implements OnInit {
     console.log("Event reached") ;
     console.log(eventData) ;
     
-    this.createUserRequest.useremail = eventData["useremail"]
+  //  this.createUserRequest.useremail = eventData["useremail"]
  
-    this.userDetailsService.createUser(this.createUserRequest)
-
+  //  this.userDetailsService.createUser(this.createUserRequest)
+  if(eventData["nextUrl"] == "getOtp"){
+      this.authServiceService.getOtp(eventData["userEmail"],this.router.url);
+      this.router.navigateByUrl('/login/verify', { state: { 
+        userEmail: this.createUserRequest.useremail,
+        nextUrl: "verifyOtpAndGetToken"
+      } });
+  }else if(eventData["nextUrl"] == "verifyOtpAndGetToken"){
+      this.authServiceService.verifyOtpAndGetToken(eventData["userEmail"],eventData["userOtp"],this.router.url);
+      this.router.navigateByUrl('/space');
+  }
   //  this.isCaptureEvent = !this.isCaptureEvent;
 //    this.isVerifyEvent = !this.isVerifyEvent;
 
-    this.router.navigateByUrl('/login/verify', { state: { userEmail: this.createUserRequest.useremail} });
+    
     console.log("This is parent");
   }
 

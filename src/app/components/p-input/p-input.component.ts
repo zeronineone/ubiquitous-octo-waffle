@@ -90,7 +90,9 @@ export class PInputComponent implements OnInit {
  //  if(this.parentFunction){
   //  this.parentFunction();
   // }
-  this.inputServiceService.capturedDataSubject.next(capturedFormData.value);
+  let submitvalue = capturedFormData.value;
+  submitvalue["nextUrl"] = this.inputComponentDataI?.nextUrl;
+  this.inputServiceService.capturedDataSubject.next(submitvalue);
   }
    
 

@@ -15,6 +15,7 @@ export class PersonalSpaceComponent implements OnInit {
     titleText: 'Welcome to local host',
     subText: 'Save you credentials',
     createAccountLabel: "Let's go!!",
+    nextUrl:"verifyOtpAndGetToken",
     inputBlockConfigs: [
       {
         name: "title",

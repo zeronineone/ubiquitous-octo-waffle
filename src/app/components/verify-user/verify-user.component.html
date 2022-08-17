@@ -10,7 +10,7 @@
         <div class="input-text user-code-head">Enter code </div>
     </div>
     <div class="input-code-wrapper">
-        <input *ngFor="let digit of otpDigits" class="input-digit" (keyup)="onDigitInput($event)" 
+        <input *ngFor="let digit of otpDigits index as i" [(ngModel)]="digit.value" class="input-digit" (keyup)="onDigitInput($event,i)" 
         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="1" />
     </div>
 </div>

@@ -40,3 +40,21 @@ npm install --global lite-server
 
 
 ng build 
+
+http://13.234.31.179:3000/#/space
+
+http://www.zeronineone.dev:3000/#/space
+
+
+sudo apt update
+sudo apt install nginx
+
+sudo ufw app list
+
+systemctl status nginx
+
+http://13.234.31.179
+
+nohup lite-server > zeronineone.log 2>&1 & echo $! > zeronineone_pid.txt
+
+lite-server --baseDir="dist/project-name"
