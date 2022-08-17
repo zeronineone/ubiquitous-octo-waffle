@@ -55,6 +55,9 @@ systemctl status nginx
 
 http://13.234.31.179
 
+
+cd /home/ubuntu/ubiquitous-octo-waffle/dist/ubiquitous-octo-waffle1
+ps -ef|grep lite
 nohup lite-server > zeronineone.log 2>&1 & echo $! > zeronineone_pid.txt
 
 lite-server --baseDir="dist/project-name"
