@@ -5,13 +5,20 @@ import * as moment from "moment";
 import { LocalStorageService } from './local-storage.service';
 import { ApiConfigs } from '../znoconstants/znoc';
 import { ApiService } from './api.service';
+import { OtpResponse, TokenResponse } from '../domains/response-opjects';
+import { Router } from '@angular/router';
+import { RoutingService } from './routing.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  constructor(private http: HttpClient, private localStorageService: LocalStorageService,private apiService : ApiService) { }
+  constructor(private http: HttpClient, 
+    private localStorageService: LocalStorageService,
+    private apiServiceOtp : ApiService<OtpResponse>,
+    private apiServiceToken : ApiService<TokenResponse>,
+    private routingService : RoutingService) { }
 
  
   /*
@@ -54,8 +61,8 @@ export class AuthServiceService {
     "expiresAt": 1663105759019
 }
   */
-
-  getOtp(email:string, url:string){
+  optResponse : OtpResponse | undefined;
+  getOtp(email:string,router : Router){
 
     const requestBody = {
       emailId: email,
@@ -63,13 +70,25 @@ export class AuthServiceService {
       countryCode:"IN"
      }
 
-     return this.apiService.doHttpPost(ApiConfigs.otpUrl,requestBody)
+     return this.apiServiceOtp.doHttpPost(ApiConfigs.otpUrl,requestBody)
      .subscribe(
-      res => console.log(res)
-      ); 
+      (response) => {
+        if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
+        this.routingService.routeToVerifyPage({ 
+        userEmail: email,
+        nextUrl: "verifyOtpAndGetToken",
+        noOfDigits: response.noOfDigits
+      },router)
+    }else{
+      this.routingService.routeToLoginPage({},router) 
+    }
+    },
+    (error) => {
+      this.routingService.routeToLoginPage({},router) 
+    });
   }
 
-  verifyOtpAndGetToken(otp:string,email:string,url:string) {
+  verifyOtpAndGetToken(otp:string,email:string,router : Router) {
 const requestBody = {
   emailId: email,
   userType:"MERCHANT",
@@ -77,21 +96,37 @@ const requestBody = {
   otp:otp
  }
 
- return this.apiService.doHttpPost(ApiConfigs.otpVerifyUrl,requestBody)
- .subscribe(
-  res => console.log(res)
-  ); 
+ return this.apiServiceToken.doHttpPost(ApiConfigs.otpVerifyUrl,requestBody)
+ .subscribe(response => {
+  if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
+    this.setSession(response);
+    console.log(this.getSession())
+    this.routingService.routeToSpacePage({},router) 
+  }else{
+    this.routingService.routeToLoginPage({},router) 
+  }}); 
 }
       
-private setSession(authResult: { expiresIn: any; idToken: string; }) {
-    const expiresAt = moment().add(authResult.expiresIn,'second');
+ setSession(tokenResponse : TokenResponse) {
+    localStorage.setItem('user_id', tokenResponse.userId);
+    localStorage.setItem("token", tokenResponse.token);
+    localStorage.setItem("user_type",tokenResponse.userType);
+    localStorage.setItem("expires_at", JSON.stringify(tokenResponse.expiresAt.valueOf()) );
+}  
 
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
-}          
+      
+getSession() :any {
+    return { 
+    userId : localStorage.getItem('user_id'),
+    token : localStorage.getItem("token"),
+    userType : localStorage.getItem("user_type"),
+    expiresAt : localStorage.getItem("expires_at")}
+}  
 
 logout() {
-    localStorage.removeItem("id_token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_type");
     localStorage.removeItem("expires_at");
 }
 
@@ -103,7 +138,8 @@ isLoggedOut() {
     return !this.isLoggedIn();
 }
 
-getExpiration() {let expiration = localStorage.getItem("expires_at");
+getExpiration() {
+  let expiration = localStorage.getItem("expires_at");
     if(expiration == null){
       expiration = "";
     }

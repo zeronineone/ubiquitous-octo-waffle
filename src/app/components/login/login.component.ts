@@ -9,6 +9,8 @@ import { PInputComponent } from '../p-input/p-input.component';
 import { InputServiceService } from 'src/app/services/input-service.service';
 import { Subscription } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { OtpResponse, TokenResponse } from 'src/app/domains/response-opjects';
+import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,13 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private inputServiceService: InputServiceService,private authServiceService: AuthServiceService,private userDetailsService: UserService,private route: ActivatedRoute,private router: Router) { }
+  constructor(private inputServiceService: InputServiceService,private authServiceService: AuthServiceService,
+    private userDetailsService: UserService,private route: ActivatedRoute,
+    private router: Router,private routingService : RoutingService) {
+
+     }
+
+
   inputComponentData : InputComponentData | undefined
   buttomnClickedSubscription: Subscription | undefined;
   ngOnInit(): void {
@@ -88,20 +96,44 @@ export class LoginComponent implements OnInit {
  
   //  this.userDetailsService.createUser(this.createUserRequest)
   if(eventData["nextUrl"] == "getOtp"){
-      this.authServiceService.getOtp(eventData["userEmail"],this.router.url);
-      this.router.navigateByUrl('/login/verify', { state: { 
-        userEmail: this.createUserRequest.useremail,
-        nextUrl: "verifyOtpAndGetToken"
-      } });
+      this.authServiceService.getOtp(eventData["userEmail"],this.router);
   }else if(eventData["nextUrl"] == "verifyOtpAndGetToken"){
-      this.authServiceService.verifyOtpAndGetToken(eventData["userEmail"],eventData["userOtp"],this.router.url);
-      this.router.navigateByUrl('/space');
+      this.authServiceService.verifyOtpAndGetToken(eventData["userOtp"],eventData["userEmail"],this.router);
   }
   //  this.isCaptureEvent = !this.isCaptureEvent;
 //    this.isVerifyEvent = !this.isVerifyEvent;
 
     
     console.log("This is parent");
+  }
+
+  processOptResponse(otpResponse : OtpResponse){
+    console.log(otpResponse)
+    if(otpResponse.statusResponse != undefined && otpResponse.statusResponse != null && otpResponse.statusResponse.statusType == 'SUCCESS'){
+
+      this.router.navigateByUrl('/login/verify', { state : { 
+        userEmail: this.createUserRequest.useremail,
+        nextUrl: "verifyOtpAndGetToken",
+        noOfDigits: otpResponse.noOfDigits
+      } });
+
+    /*  this.routingService.routeToVerifyPage({ 
+        userEmail: this.createUserRequest.useremail,
+        nextUrl: "verifyOtpAndGetToken",
+        noOfDigits: otpResponse.noOfDigits
+      },this.router);*/
+    }else{
+      this.routingService.routeToLoginPage({},this.router) 
+    }
+  }
+  processverifyOtpAndGetTokenResponse(tokenResponse :TokenResponse){
+    console.log(tokenResponse)
+    if(tokenResponse.statusResponse != undefined && tokenResponse.statusResponse != null && tokenResponse.statusResponse.statusType == 'SUCCESS'){
+      this.authServiceService.setSession(tokenResponse);
+      this.routingService.routeToSpacePage({},this.router) 
+    }else{
+      this.routingService.routeToLoginPage({},this.router) 
+    }
   }
 
 }

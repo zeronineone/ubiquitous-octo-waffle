@@ -25,12 +25,12 @@ export class AppComponent {
   constructor(private router: Router, private authServiceService : AuthServiceService) { }
 
   ngOnInit(): void {
-    //this.authServiceService.getOtp("shub.singh007@gmail.com",this.router.url);
-   /* if(false){
-      this.router.navigateByUrl('/login');
-    }else{
+    
+    if(this.authServiceService.isLoggedIn()){
       this.router.navigateByUrl('/space');
-    }*/
+    }else{
+      this.router.navigateByUrl('/login');
+    }
   }
 
 }
