@@ -13,7 +13,7 @@ export class RoutingService {
   }
 
   public routeToLoginPage(stateData:any,router: Router) {
-    router.navigateByUrl('/login',{ state : stateData });
+    router.navigateByUrl('/login');
   }
 
   public routeToVerifyPage(stateData:any,router: Router) {

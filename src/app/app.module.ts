@@ -15,7 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WindowsComponent } from './components/windows/windows.component';
 import { ViewComponent } from './components/view/view.component';
 import { CredentialsComponent } from './components/types/credentials/credentials.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -38,7 +38,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FormsModule,
     HttpClientModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  //providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

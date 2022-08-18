@@ -168,12 +168,10 @@ isLoggedOut() {
 
 getExpiration() {
   let expiration = localStorage.getItem("expires_at");
-    if(expiration == null){
-      expiration = "";
+    if(expiration != null){
+      const expiresAt = JSON.parse(expiration);
+      return moment(expiresAt);
     }
-    const expiresAt = JSON.parse(expiration);
-    return moment(expiresAt);
+    return moment(1000000000000);
 }    
 }
-
-
