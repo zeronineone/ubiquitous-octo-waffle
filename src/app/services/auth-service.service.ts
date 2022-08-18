@@ -70,9 +70,9 @@ export class AuthServiceService {
       countryCode:"IN"
      }
 
-     return this.apiServiceOtp.doHttpPost(ApiConfigs.otpUrl,requestBody)
+   /*  return this.apiServiceOtp.doHttpPost(ApiConfigs.otpUrl,requestBody)
      .subscribe(
-      (response) => {
+      (response) =>  {
         if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
         this.routingService.routeToVerifyPage({ 
         userEmail: email,
@@ -85,7 +85,26 @@ export class AuthServiceService {
     },
     (error) => {
       this.routingService.routeToLoginPage({},router) 
-    });
+    }); */
+
+    return this.apiServiceOtp.doHttpPost(ApiConfigs.otpUrl,requestBody).subscribe({
+      next: (response) => {
+        if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
+            this.routingService.routeToVerifyPage({ 
+            userEmail: email,
+            nextUrl: "verifyOtpAndGetToken",
+            noOfDigits: response.noOfDigits
+          },router)
+        }else{
+          this.routingService.routeToLoginPage({},router) 
+        }
+      },
+      error: (e) => {
+        console.log(e);
+        this.routingService.routeToLoginPage({},router) 
+      },
+      complete: () => console.info('complete') 
+    })
   }
 
   verifyOtpAndGetToken(otp:string,email:string,router : Router) {
@@ -97,14 +116,23 @@ const requestBody = {
  }
 
  return this.apiServiceToken.doHttpPost(ApiConfigs.otpVerifyUrl,requestBody)
- .subscribe(response => {
-  if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
-    this.setSession(response);
-    console.log(this.getSession())
-    this.routingService.routeToSpacePage({},router) 
-  }else{
+ .subscribe({
+  next: (response) => {
+    if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
+      this.setSession(response);
+      console.log(this.getSession())
+      this.routingService.routeToSpacePage({},router) 
+    }else{
+      this.routingService.routeToLoginPage({},router) 
+    }
+  },
+  error: (e) => {
+    console.log(e);
     this.routingService.routeToLoginPage({},router) 
-  }}); 
+  },
+  complete: () => console.info('complete') 
+
+ }); 
 }
       
  setSession(tokenResponse : TokenResponse) {

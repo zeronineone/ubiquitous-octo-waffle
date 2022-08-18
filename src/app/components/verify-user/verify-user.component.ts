@@ -48,11 +48,11 @@ export class VerifyUserComponent implements OnInit {
       if(event.currentTarget.nextElementSibling == null){
         console.log(this.otpDigits);
         this.otpDigits[index].value = event["key"];
-        console.log(this.extractOtpAndVerify());
-        this.inputServiceService.capturedDataSubject.next("test");
+        this.extractOtpAndVerify();
+       // this.inputServiceService.capturedDataSubject.next("test");
       }else{
          element = event.srcElement.nextElementSibling;
-         this.otpDigits[index].value = event["key"];//"5";
+         this.otpDigits[index].value = event["key"];
       }
          
     }
@@ -73,7 +73,7 @@ export class VerifyUserComponent implements OnInit {
     }
  }
  if(event.code === 'Enter'){
-
+  this.extractOtpAndVerify();
  }
      if(element == null)
          return;
@@ -83,7 +83,7 @@ export class VerifyUserComponent implements OnInit {
  private extractOtpAndVerify() {
   let otp = "";
   for(var count = 0 ; count < this.noOfotpDigits; count++){
-    if(Number(this.otpDigits[count].value)){
+    if(!isNaN(Number(this.otpDigits[count].value))){
       otp += this.otpDigits[count].value;
     }
    }
@@ -98,5 +98,9 @@ export class VerifyUserComponent implements OnInit {
  }
  onPaste(event:ClipboardEvent){
   console.log(event);
+  if(event.clipboardData != null){
+    console.log(event.clipboardData.getData('text'))
+  }
  }
 }
+// oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
