@@ -18,6 +18,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.windows-container:hover{
+    background-color: #5a249f;
     cursor: pointer;
 }
 .input-text{

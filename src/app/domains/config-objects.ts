@@ -8,8 +8,17 @@ export interface InputBlockConfig{
     inputStatus : boolean[];
 }
 export enum StatusType {
-    SUCCESS = 1,
-    ERROR 
+    SUCCESS = "SUCCESS",
+    ERROR = "ERROR" 
+  }
+  export enum CountryCode {
+    IN = "IN"
+  }
+  export enum UserType {
+    ZNO_USER = "ZNO_USER",
+    ZNO_ADMIN = "ZNO_ADMIN",
+    ZNO_SUPPORT = "ZNO_SUPPORT",
+    ZNO_DEVELOPER = "ZNO_DEVELOPER"
   }
 export interface Status{
     code: number;
@@ -30,6 +39,9 @@ export enum BackgroundAction{
     PERSONAL_SPACE
 }
 
-export interface User{
-    
+export interface UserAuth{
+  userId: string;
+  token: string;
+  userType: UserType;
+  expiresAt: Number;
 }

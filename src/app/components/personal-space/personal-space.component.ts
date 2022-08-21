@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
   selector: 'app-personal-space',
@@ -7,139 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalSpaceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private routingService : RoutingService) { }
 
   ngOnInit(): void {
   }
-  inputComponentData  = {
-    titleText: 'Welcome to local host',
-    subText: 'Save you credentials',
-    createAccountLabel: "Let's go!!",
-    nextUrl:"verifyOtpAndGetToken",
-    inputBlockConfigs: [
-      {
-        name: "title",
-        label: "Tile",
-        type: "text",
-        isVisible : true,
-        isContinueVisible: true,
-        inputStatus : [true,false,false]
-      },
-      {
-        name: "url",
-        label: "Url",
-        type: "text",
-        isVisible : true,
-        isContinueVisible: true,
-        inputStatus : [true,false,false]
-      },
-      {
-        name: "username",
-        label: "User Name",
-        type: "text",
-        isVisible : true,
-        isContinueVisible: true,
-        inputStatus : [true,false,false]
-      },
-      {
-        name: "password",
-        label: "Password",
-        type: "password",
-        isVisible : true,
-        isContinueVisible: true,
-        inputStatus : [true,false,false]
-      },
-      {
-        name: "description",
-        label: "Description",
-        type: "text",
-        isVisible : true,
-        isContinueVisible: true,
-        inputStatus : [true,false,false]
-      },
-      {
-        name: "hint",
-        label: "Hint",
-        type: "text",
-        isVisible : true,
-        isContinueVisible: true,
-        inputStatus : [true,false,false]
-      }
-    ]
+  navigateTo(conf : {
+    name:string,
+    url:string
+  }){
+    this.routingService.doRoute(conf.url,{},this.router);
   }
   numberOfTypes = [{
-    name:"Hello1"
+    name:"Credentials",
+    url:"/space/blackhole"
   },
   {
-    name:"Hello2"
+    name:"Resources",
+    url:"/space/neptune"
   },
   {
-    name:"Hello3"
+    name:"Moments",
+    url:"/space/moments"
   },
   {
-    name:"Hello4"
-  },
-  {
-    name:"Hello5"
-  },
-  {
-    name:"Hello6"
+    name:"Tasks",
+    url:"/space/tasks"
   }] 
 
-  listOfCreds = [{
-     id:"id",
-     title:"title",
-     userName:"username",
-     password:"pass",
-     url:"url",
-     description:"description",
-    hint:"hint",
-    createdAt:"createdAt",
-    modifiedAt:"modifiedAt"
-  },
-  {
-    id:"id",
-    title:"title",
-    userName:"username",
-    password:"pass",
-    url:"url",
-    description:"description",
-   hint:"hint",
-   createdAt:"createdAt",
-   modifiedAt:"modifiedAt"
- },
- {
-  id:"id",
-  title:"title",
-  userName:"username",
-  password:"pass",
-  url:"url",
-  description:"description",
- hint:"hint",
- createdAt:"createdAt",
- modifiedAt:"modifiedAt"
-},
-{
-  id:"id",
-  title:"title",
-  userName:"username",
-  password:"pass",
-  url:"url",
-  description:"description",
- hint:"hint",
- createdAt:"createdAt",
- modifiedAt:"modifiedAt"
-}
-,{
-  id:"id",
-  title:"title",
-  userName:"username",
-  password:"pass",
-  url:"url",
-  description:"description",
- hint:"hint",
- createdAt:"createdAt",
- modifiedAt:"modifiedAt"
-}]
+ 
 
 }

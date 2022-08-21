@@ -1,15 +1,25 @@
 export class ApiConfigs {
-    static localBaseUrl = "http://localhost:8103/"
-    //static prodBaseUrl = "https://apis.zeronineone.dev/"
-    static prodBaseUrl = "https://apis.agastu.com/"
+    static localBaseUrl = "http://localhost:8103/blackhole/"
+    static prodBaseUrl = "https://apis.zeronineone.dev/blackhole/"
+    
     static prodHeaders = {
         'application-id': "0ff360d7-281c-4cc6-a229-1ec3d43db840",
-        'application-secret': "8de09935-6f00-4f76-84ef-3681989dd4e3"
+        'application-secret': "8de09935-6f00-4f76-84ef-3681989dd4e3",
+        'user-id': "",
+        'token': "",
+        'user-type': ""
     }
+ 
     static localHeaders = {
-        'application-id': "e97beb9a-5d17-4449-ad2e-2f0b51d1324b",
-        'application-secret': "4c9c1c44-81e3-4839-b089-f16596c1844b"
+        'application-id': "a8e9cda4-c957-44be-98b6-538a57ed2539",
+        'application-secret': "4b5ab7d6-0e24-4327-a59f-0f9aae5ed216",
+        'user-id': "",
+        'token': "",
+        'user-type': ""
     }
-    static otpUrl = "sagittarius/pythagoras/login/otp/generate/email" ;
-    static otpVerifyUrl = "sagittarius/pythagoras/login/otp/verify/email" ;
+    static otpUrl =  "bifrost/login/otp/generate/email" ;
+    static otpVerifyUrl = "bifrost/login/otp/verify/email" ;
+    static createCredentials = "saveit/credentials" ;
+    static getCredentials = "saveit/credentials/information" ;
+    static updateCredentials = "saveit/credentials/information" ;
 }

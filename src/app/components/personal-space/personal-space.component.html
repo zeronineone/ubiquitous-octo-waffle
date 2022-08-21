@@ -1,15 +1,7 @@
 <div class="personal-space-wrapper">
-   <!-- <div class="display-wrapper">
-        <div class="windows-wrapper" *ngFor="let typeConfig of numberOfTypes;">
+    <div class="display-wrapper">
+        <div (click)="navigateTo(typeConfig)" class="windows-wrapper" *ngFor="let typeConfig of numberOfTypes;">
             <app-windows [typeOfData] = typeConfig.name  ></app-windows>
         </div>
-    </div> -->
-   <!-- <div class="display-wrapper-view">
-        <div class="windows-wrapper-view" *ngFor="let typeConfig of listOfCreds;">
-            <app-view  ></app-view>
-        </div>
-    </div> -->
-      <div class="input-wrapper-view">
-            <app-p-input [inputComponentDataI] = inputComponentData ></app-p-input>
-      </div> 
+    </div>
 </div>

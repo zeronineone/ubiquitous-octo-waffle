@@ -16,6 +16,7 @@ import { WindowsComponent } from './components/windows/windows.component';
 import { ViewComponent } from './components/view/view.component';
 import { CredentialsComponent } from './components/types/credentials/credentials.component';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
     LoginComponent,
     WindowsComponent,
     ViewComponent,
-    CredentialsComponent
+    CredentialsComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

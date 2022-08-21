@@ -22,5 +22,8 @@ export class RoutingService {
   public routeToSpacePage(stateData:any,router: Router) {
     router.navigateByUrl('/space',{ state : stateData });
   }
+  public routeToCredentialPage(stateData:any,router: Router) {
+    router.navigateByUrl('/space/blackhole',{ state : stateData });
+  }
 
 }

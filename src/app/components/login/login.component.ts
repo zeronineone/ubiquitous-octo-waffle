@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateUserRequest, InputBlockConfig } from 'src/app/domains/config-objects';
+import { CreateUserRequest, InputBlockConfig, StatusType } from 'src/app/domains/config-objects';
 import { InputComponentData } from 'src/app/domains/input-component';
 import { comapy_name } from 'src/app/app-constants';
 import { UserService } from 'src/app/services/user-details.service';
@@ -107,33 +107,5 @@ export class LoginComponent implements OnInit {
     console.log("This is parent");
   }
 
-  processOptResponse(otpResponse : OtpResponse){
-    console.log(otpResponse)
-    if(otpResponse.statusResponse != undefined && otpResponse.statusResponse != null && otpResponse.statusResponse.statusType == 'SUCCESS'){
-
-      this.router.navigateByUrl('/login/verify', { state : { 
-        userEmail: this.createUserRequest.useremail,
-        nextUrl: "verifyOtpAndGetToken",
-        noOfDigits: otpResponse.noOfDigits
-      } });
-
-    /*  this.routingService.routeToVerifyPage({ 
-        userEmail: this.createUserRequest.useremail,
-        nextUrl: "verifyOtpAndGetToken",
-        noOfDigits: otpResponse.noOfDigits
-      },this.router);*/
-    }else{
-      this.routingService.routeToLoginPage({},this.router) 
-    }
-  }
-  processverifyOtpAndGetTokenResponse(tokenResponse :TokenResponse){
-    console.log(tokenResponse)
-    if(tokenResponse.statusResponse != undefined && tokenResponse.statusResponse != null && tokenResponse.statusResponse.statusType == 'SUCCESS'){
-      this.authServiceService.setSession(tokenResponse);
-      this.routingService.routeToSpacePage({},this.router) 
-    }else{
-      this.routingService.routeToLoginPage({},this.router) 
-    }
-  }
 
 }

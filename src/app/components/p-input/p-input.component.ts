@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { InputServiceService } from 'src/app/services/input-service.service';
 import { Subscription } from 'rxjs';
+import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
   selector: 'app-p-input',
@@ -30,7 +31,8 @@ export class PInputComponent implements OnInit {
 
   data: any = {};
   routeState: any;
-  constructor(private inputServiceService: InputServiceService, private route: ActivatedRoute,private location:Location,private router: Router) { 
+  constructor(private inputServiceService: InputServiceService, private route: ActivatedRoute,private location:Location,private router: Router,
+    private routingService : RoutingService) { 
    /* if (this.router.getCurrentNavigation()?.extras.state) {
       this.routeState = this.router.getCurrentNavigation()?.extras.state;
       if (this.routeState) {
@@ -47,6 +49,8 @@ export class PInputComponent implements OnInit {
     console.log(history.state);
     if(Object.keys(history.state).length > 1){
       this.inputComponentDataI = history.state;
+    }else{
+      this.routingService.routeToLoginPage({},this.router);
     }
 
    // this.questionLabelSub = this.inputServiceService.getQuestionLabels().subscribe((value : any)=>{

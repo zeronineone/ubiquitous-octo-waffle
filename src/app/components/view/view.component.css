@@ -15,7 +15,23 @@
     color: #00cfc8;
 }
 .display-value-text{
-    color: #ffffff;
+    color: #ffff;
+    font-family: RedHatMono-Medium;
+    font-size: 16px;
+    background: transparent;
+    box-shadow: none !important;
+    resize: none;
+    outline: none;
+    border: 0 !important;
+    display: block;
+    position: relative;
+    width: 70%;
+}
+.input-fa-eye-icon{
+    color : #ea4aaa;
+}
+.input-fa-eye-slash-icon{
+    color : #ea4aaa;
 }
 .display-text{
     display: flex;

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../domains/config-objects';
+import { CountryCode, StatusType, UserAuth, UserType } from '../domains/config-objects';
 import * as moment from "moment";
 import { LocalStorageService } from './local-storage.service';
 import { ApiConfigs } from '../znoconstants/znoc';
@@ -20,76 +20,19 @@ export class AuthServiceService {
     private apiServiceToken : ApiService<TokenResponse>,
     private routingService : RoutingService) { }
 
- 
-  /*
-  application-id
-  application-secret
-  {
- "emailId":"shub.singh007@gmail.com",
- "userType":"MERCHANT",
- "countryCode":"IN"
-}
-{
-    "emailId":"shub.singh007@gmail.com",
- "userType":"MERCHANT",
- "countryCode":"IN",
- "otp":"240137"
-}
-{
-    "statusResponse": {
-        "statusCode": 1001,
-        "statusMessage": "Successfully sent otp",
-        "statusType": "SUCCESS",
-        "errors": null
-    },
-    "noOfDigits": 6,
-    "retryRemaining": 3,
-    "coolDownTimeInSec": 0,
-    "newUser": false
-}
 
-{
-    "statusResponse": {
-        "statusCode": 1002,
-        "statusMessage": "Successfully generated token",
-        "statusType": "SUCCESS",
-        "errors": null
-    },
-    "userId": "usrmer4aef5c9016754c77ac03fd437995e7d5",
-    "token": "1660513759016-x1SnXFXKNbb37dVWkJDh68UedOnEApMTk7BNpwbTx9bNohhPOrwy1kf5zsHWChq7VdAhVNYhMNSus3610mGkag==",
-    "userType": "MERCHANT",
-    "expiresAt": 1663105759019
-}
-  */
   optResponse : OtpResponse | undefined;
   getOtp(email:string,router : Router){
 
     const requestBody = {
       emailId: email,
-      userType:"MERCHANT",
-      countryCode:"IN"
+      userType:UserType.ZNO_USER,
+      countryCode:CountryCode.IN
      }
-
-   /*  return this.apiServiceOtp.doHttpPost(ApiConfigs.otpUrl,requestBody)
-     .subscribe(
-      (response) =>  {
-        if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
-        this.routingService.routeToVerifyPage({ 
-        userEmail: email,
-        nextUrl: "verifyOtpAndGetToken",
-        noOfDigits: response.noOfDigits
-      },router)
-    }else{
-      this.routingService.routeToLoginPage({},router) 
-    }
-    },
-    (error) => {
-      this.routingService.routeToLoginPage({},router) 
-    }); */
 
     return this.apiServiceOtp.doHttpPost(ApiConfigs.otpUrl,requestBody).subscribe({
       next: (response) => {
-        if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
+        if(response != undefined && response != null && response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == StatusType.SUCCESS){
             this.routingService.routeToVerifyPage({ 
             userEmail: email,
             nextUrl: "verifyOtpAndGetToken",
@@ -110,15 +53,15 @@ export class AuthServiceService {
   verifyOtpAndGetToken(otp:string,email:string,router : Router) {
 const requestBody = {
   emailId: email,
-  userType:"MERCHANT",
-  countryCode:"IN",
+  userType:UserType.ZNO_USER,
+  countryCode:CountryCode.IN,
   otp:otp
  }
 
  return this.apiServiceToken.doHttpPost(ApiConfigs.otpVerifyUrl,requestBody)
  .subscribe({
   next: (response) => {
-    if(response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == 'SUCCESS'){
+    if(response != undefined && response != null && response.statusResponse != undefined && response.statusResponse != null && response.statusResponse.statusType == StatusType.SUCCESS){
       this.setSession(response);
       console.log(this.getSession())
       this.routingService.routeToSpacePage({},router) 
@@ -142,13 +85,26 @@ const requestBody = {
     localStorage.setItem("expires_at", JSON.stringify(tokenResponse.expiresAt.valueOf()) );
 }  
 
-      
-getSession() :any {
-    return { 
-    userId : localStorage.getItem('user_id'),
-    token : localStorage.getItem("token"),
-    userType : localStorage.getItem("user_type"),
-    expiresAt : localStorage.getItem("expires_at")}
+ userAuth = {} as UserAuth;
+getSession() :UserAuth {
+
+  let user_id = localStorage.getItem("user_id");
+  if(user_id != null){
+     this.userAuth.userId = user_id;
+  }
+  let token = localStorage.getItem("token");
+  if(token != null){
+     this.userAuth.token = token;
+  }
+  let user_type = localStorage.getItem("user_type");
+  if(user_type != null){
+     this.userAuth.userType = <UserType>user_type;
+  }
+  let expires_at = localStorage.getItem("expires_at");
+  if(expires_at != null){
+     this.userAuth.expiresAt = +expires_at;
+  }
+    return this.userAuth;
 }  
 
 logout() {
@@ -159,10 +115,11 @@ logout() {
 }
 
 public isLoggedIn() {
+  //return true;
     return moment().isBefore(this.getExpiration());
 }
 
-isLoggedOut() {
+isNonLoggedIn() {
     return !this.isLoggedIn();
 }
 

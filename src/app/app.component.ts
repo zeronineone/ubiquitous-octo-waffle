@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/internal/Subject';
 import { ParticlesBgComponent } from './components/particles-bg/particles-bg.component';
 import { BackgroundAction } from './domains/config-objects';
 import { AuthServiceService } from './services/auth-service.service';
+import { RoutingService } from './services/routing.service';
 
 @Component({
   selector: 'app-root',
@@ -22,15 +23,15 @@ export class AppComponent {
     this.particlesBgComponent?.updateBgEvent(backgroundAction)
     console.log("IN APP COMP this.backgroundActionType "+this.backgroundActionType);
   }
-  constructor(private router: Router, private authServiceService : AuthServiceService) { }
+  constructor(private router: Router, private authServiceService : AuthServiceService, private routingService : RoutingService) { }
 
   ngOnInit(): void {
     
-    if(this.authServiceService.isLoggedIn()){
-      this.router.navigateByUrl('/space');
+   /* if(this.authServiceService.isLoggedIn()){
+      this.routingService.routeToSpacePage({},this.router);
     }else{
-      this.router.navigateByUrl('/login');
-    }
+      this.routingService.routeToLoginPage({},this.router);
+    }*/ 
   }
 
 }
