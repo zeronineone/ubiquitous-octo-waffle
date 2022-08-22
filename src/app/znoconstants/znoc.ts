@@ -1,10 +1,11 @@
 export class ApiConfigs {
     static localBaseUrl = "http://localhost:8103/blackhole/"
-    static prodBaseUrl = "https://apis.zeronineone.dev/blackhole/"
+   // static prodBaseUrl = "https://apis.zeronineone.dev/blackhole/"
+    static prodBaseUrl = "http://65.0.85.153:8103/blackhole/"
     
     static prodHeaders = {
-        'application-id': "0ff360d7-281c-4cc6-a229-1ec3d43db840",
-        'application-secret': "8de09935-6f00-4f76-84ef-3681989dd4e3",
+        'application-id': "5be5ed03-247a-4609-967c-4e39279ec729",
+        'application-secret': "b0d52976-8ebc-4242-9a10-aeb504b10dc4",
         'user-id': "",
         'token': "",
         'user-type': ""
