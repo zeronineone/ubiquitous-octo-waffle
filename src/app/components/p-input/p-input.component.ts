@@ -50,7 +50,7 @@ export class PInputComponent implements OnInit {
     if(Object.keys(history.state).length > 1){
       this.inputComponentDataI = history.state;
     }else{
-      this.routingService.routeToLoginPage({},this.router);
+    //  this.routingService.routeToLoginPage({},this.router);
     }
 
    // this.questionLabelSub = this.inputServiceService.getQuestionLabels().subscribe((value : any)=>{
