@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CreateUserRequest, InputBlockConfig, StatusType } from 'src/app/domains/config-objects';
 import { InputComponentData } from 'src/app/domains/input-component';
 import { comapy_name } from 'src/app/app-constants';
-import { UserService } from 'src/app/services/user-details.service';
 import { NgForm } from '@angular/forms';
 import {  Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { PInputComponent } from '../p-input/p-input.component';
@@ -20,7 +19,7 @@ import { RoutingService } from 'src/app/services/routing.service';
 export class LoginComponent implements OnInit {
 
   constructor(private inputServiceService: InputServiceService,private authServiceService: AuthServiceService,
-    private userDetailsService: UserService,private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router,private routingService : RoutingService) {
 
      }
