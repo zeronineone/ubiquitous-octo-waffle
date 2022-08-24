@@ -24,6 +24,7 @@ export class CredentialsComponent implements OnInit {
       isdisplay : true,
       isinput : false
     }
+    this.getCredentials();
     this.inputServiceService.getCapturedData().subscribe((value)=>{
       console.log(value)
       this.captureDataFromInputCompotent(value);

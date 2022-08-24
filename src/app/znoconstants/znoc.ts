@@ -1,6 +1,6 @@
 export class ApiConfigs {
-    static localBaseUrl = "http://localhost:8103/blackhole/"
-   // static localBaseUrl = "https://apis.zeronineone.dev/blackhole/"
+   // static localBaseUrl = "http://localhost:8103/blackhole/"
+    static localBaseUrl = "https://apis.zeronineone.dev/blackhole/"
     static prodBaseUrl = "https://apis.zeronineone.dev/blackhole/"
    // static prodBaseUrl = "http://65.0.85.153:8103/blackhole/"
     

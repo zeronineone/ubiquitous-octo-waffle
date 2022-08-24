@@ -15,6 +15,7 @@ export class RoutingService {
   public routeToLoginPage(stateData:any,router: Router) {
     router.navigateByUrl('/login');
   }
+  
 
   public routeToVerifyPage(stateData:any,router: Router) {
     router.navigateByUrl('/login/verify', { state : stateData });

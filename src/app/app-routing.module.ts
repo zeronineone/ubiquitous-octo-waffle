@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { PInputComponent } from './components/p-input/p-input.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { PersonalSpaceComponent } from './components/personal-space/personal-space.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   canActivate: [NonLoggedInGuard]},
   { path: '', component: PersonalSpaceComponent, canActivate: [LoggedInGuard]},
   { path: 'space', component: PersonalSpaceComponent, canActivate: [LoggedInGuard]},
+  { path: 'logout', component: LogoutComponent, canActivate: [LoggedInGuard]},
   { path: 'space/blackhole', component: CredentialsComponent, canActivate: [LoggedInGuard]},
   { path: '**', pathMatch: 'full', 
         component: PagenotfoundComponent },

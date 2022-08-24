@@ -18,6 +18,7 @@ import { CredentialsComponent } from './components/types/credentials/credentials
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { DynamicDirective } from './directive/dynamic.directive';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { DynamicDirective } from './directive/dynamic.directive';
     ViewComponent,
     CredentialsComponent,
     PagenotfoundComponent,
-    DynamicDirective
+    DynamicDirective,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

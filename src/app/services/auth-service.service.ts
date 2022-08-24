@@ -62,6 +62,10 @@ export class AuthServiceService {
   }
 
   verifyOtpAndGetToken(otp:string,email:string,router : Router) {
+    this.inputServiceService.updateBackgroundSubject.next({
+      moveDirection : MoveDirection.bottomLeft,
+      isMoving : true
+     });
 const requestBody = {
   emailId: email,
   userType:UserType.ZNO_USER,
@@ -84,7 +88,12 @@ const requestBody = {
     console.log(e);
     this.routingService.routeToLoginPage({},router) 
   },
-  complete: () => console.info('complete') 
+  complete: () => {console.info('complete') 
+  this.inputServiceService.updateBackgroundSubject.next({
+    moveDirection : MoveDirection.none,
+    isMoving : false
+   });
+} 
 
  }); 
 }
