@@ -4,11 +4,3 @@
     margin: 0 !important;
     padding: 0 !important;
 }
-.input-area{
-    display: block;
-    position: relative;
-    height: auto;
-    width: 35%;
-    left: calc((100% - 35% ) / 2 );
-    top: 20%;
-}

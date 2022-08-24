@@ -1,0 +1,42 @@
+.views-container{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #0c162d;
+    border: 1px solid #202637;
+    box-shadow: var(--color-shadow-small) !important;
+    border-radius: 6px !important;
+    box-sizing: border-box;
+    padding: 10px;
+
+}
+.display-label-text{
+    color: #00cfc8;
+}
+.display-value-text{
+    color: #ffff;
+    font-family: RedHatMono-Medium;
+    font-size: 16px;
+    background: transparent;
+    box-shadow: none !important;
+    resize: none;
+    outline: none;
+    border: 0 !important;
+    display: block;
+    position: relative;
+    width: 70%;
+}
+.input-fa-eye-icon{
+    color : #ea4aaa;
+}
+.input-fa-eye-slash-icon{
+    color : #ea4aaa;
+}
+
+.display-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+}

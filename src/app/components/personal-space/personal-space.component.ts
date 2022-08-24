@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
   selector: 'app-personal-space',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalSpaceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private routingService : RoutingService) { }
 
   ngOnInit(): void {
   }
+  navigateTo(conf : {
+    name:string,
+    url:string
+  }){
+    this.routingService.doRoute(conf.url,{},this.router);
+  }
+  numberOfTypes = [{
+    name:"Credentials",
+    url:"/space/blackhole"
+  },
+  {
+    name:"Resources",
+    url:"/space/neptune"
+  },
+  {
+    name:"Moments",
+    url:"/space/moments"
+  },
+  {
+    name:"Tasks",
+    url:"/space/tasks"
+  }] 
+
+ 
 
 }

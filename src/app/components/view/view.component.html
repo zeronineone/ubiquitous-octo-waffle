@@ -1,0 +1,11 @@
+<div class="views-container">
+    <div  >
+        <div class="display-text" *ngFor="let details of displayConfigs">
+            <div class="display-label-text">{{details.name}}</div>
+            <div class="display-label-text">&nbsp;:&nbsp;</div>
+            <input class="display-value-text" type = "{{details.type}}" value = "{{details.value}}" readonly >
+            <fa-icon *ngIf="!details.isSesitiveVisible && details.isSensitive" (click) = "toggleSensitivity(details)" class="input-fa-eye-icon" [icon]="faEyeSlash"></fa-icon>
+            <fa-icon *ngIf="details.isSesitiveVisible && details.isSensitive" (click) = "toggleSensitivity(details)" class="input-fa-eye-slash-icon" [icon]="faEye"></fa-icon>
+        </div>
+    </div>
+</div>

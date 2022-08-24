@@ -7,14 +7,14 @@
 .input-container{
     display: block;
     position: relative;
-    height: 100%;
+    height: auto;
     width: 100%;
     background-color: #0c162d;
     border: 1px solid #202637;
     box-shadow: var(--color-shadow-small) !important;
     border-radius: 6px !important;
     box-sizing: border-box;
-    padding: var(--p-24-px);
+    padding: 10px;
 }
 .input-text-heading-wrapper{
     display: block;
@@ -36,7 +36,7 @@
     width: 100%;
     position: relative;
     padding: var(--padding);
-    padding-top: var(--p-24-px);
+    margin-top: 10px;
 }
 
 .input-cursor{
@@ -121,6 +121,7 @@
     color: #2da44e;
     background: none;
     border: 1px solid #2da44e;
+    margin-top: 10px;
 }
 .continue-button-disabled{
     color: #627597;

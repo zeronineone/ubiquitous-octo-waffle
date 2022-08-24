@@ -1,0 +1,44 @@
+:root {
+    --color-shadow-small: 0 1px 0 rgba(27,31,36,0.04);
+    --padding : 3px 0px 0px 3px; /*T R B L*/
+    --p-24-px : 24px !important;
+}
+
+.windows-container{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #0c162d;
+    border: 1px solid #202637;
+    box-shadow: var(--color-shadow-small) !important;
+    border-radius: 6px !important;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.windows-container:hover{
+    background-color: #5a249f;
+    cursor: pointer;
+}
+.input-text{
+    color: #627597;
+    overflow: hidden;
+    line-height: 1.5;
+    margin: 0 auto;
+    word-wrap: break-word;
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+    
+}
+
+::-moz-selection { /* Code for Firefox */
+    background: #00cfc8;
+  }
+  
+  ::selection {
+    background: #00cfc8;
+  }

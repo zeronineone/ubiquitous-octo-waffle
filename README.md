@@ -25,3 +25,39 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+zeronineonedb
+znoadmin
+UUQbYVB8CEF23Zb
+
+git clone https://github.com/zeronineone/ubiquitous-octo-waffle.git
+
+ssh -i /Users/apple/znoLogins/znoui.pem ubuntu@13.234.31.179
+
+sudo apt update
+sudo apt install nodejs npm
+npm install --global lite-server
+
+
+ng build 
+
+http://13.234.31.179:3000/#/space
+
+http://www.zeronineone.dev:3000/#/space
+
+
+sudo apt update
+sudo apt install nginx
+
+sudo ufw app list
+
+systemctl status nginx
+
+http://13.234.31.179
+
+
+cd /home/ubuntu/ubiquitous-octo-waffle/dist/ubiquitous-octo-waffle1
+ps -ef|grep lite
+nohup lite-server > zeronineone.log 2>&1 & echo $! > zeronineone_pid.txt
+
+lite-server --baseDir="dist/project-name"

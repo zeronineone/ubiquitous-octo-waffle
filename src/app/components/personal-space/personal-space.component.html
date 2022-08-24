@@ -1,1 +1,7 @@
-<p>personal-space works!</p>
+<div class="personal-space-wrapper">
+    <div class="display-wrapper">
+        <div (click)="navigateTo(typeConfig)" class="windows-wrapper" *ngFor="let typeConfig of numberOfTypes;">
+            <app-windows [typeOfData] = typeConfig.name  ></app-windows>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+.views-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.views-content{
+    display: flex;
+    position: relative;
+    height: 50%;
+    width: 50%;
+    background-color: #0c162d;
+    border: 1px solid #202637;
+    box-shadow: var(--color-shadow-small) !important;
+    border-radius: 6px !important;
+    box-sizing: border-box;
+    padding: 10px;
+    cursor: pointer;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.views-content:hover{
+    background-color: #020f2d;
+}
+.display-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.input-fa-face-icon{
+    color :  #00cfc8;
+    font-size: 100px;
+}
+.display-value-text{
+    color: #ea4aaa;
+    font-size: 50px;
+}
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.display-click-value-text{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    font-size: 50px;
+}
+.input-fa-eye-slash-icon{
+    color : #ea4aaa;
+    color: #00cfc8;
+    color: #ffff;
+}

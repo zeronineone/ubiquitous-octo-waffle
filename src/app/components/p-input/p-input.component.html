@@ -1,24 +1,22 @@
 <div class="input-container">
     <div class="input-text-heading-wrapper">
-        <div class="input-text">{{titleText}}</div>
+        <div class="input-text">{{inputComponentDataI?.titleText}}</div>
     </div>
     <div class="input-text-heading-wrapper">
-        <div class="input-text">{{subText}}</div>
+        <div class="input-text">{{inputComponentDataI?.subText}}</div>
     </div>
-    <form #createUserForm="ngForm" (ngSubmit)="createUserAccount(createUserForm)">
-    <div *ngFor="let displayConfig of displayConfigs; let i = index;"   class="input-label-value-wrapper">
-        <div *ngIf="displayConfig.isVisible">
+    <form #capturedFormData="ngForm" (ngSubmit)="publishCaturedData(capturedFormData)">
+    <div *ngFor="let displayConfig of inputComponentDataI?.inputBlockConfigs; let i = index;"   class="input-label-value-wrapper">
+        
         <label for="text" class="input-text input-label-text">{{displayConfig.label}}</label>
         <div class="input-icon input-icon-email"> 
             <fa-icon *ngIf="displayConfig.inputStatus[0]" class="inout-fa-arrow-right-icon" [icon]="faArrowRight"></fa-icon>
             <fa-icon *ngIf="displayConfig.inputStatus[1]" class="inout-fa-check-icon" [icon]="faCheck"></fa-icon>
             <fa-icon *ngIf="displayConfig.inputStatus[2]" class="inout-fa-xmark-icon" [icon]="faXmark"></fa-icon>
-          <!--  <input type="{{displayConfig.type}}" [(ngModel)]="displayConfig.value" name = "{{displayConfig.name}}" class="input-area email-input"/>-->
-            <input type="{{displayConfig.type}}" ngModel #{{displayConfig.value}}="ngModel"  name = "{{displayConfig.name}}" class="input-area email-input"/>
+            <input type="{{displayConfig.type}}" ngModel #{{displayConfig.value}}="ngModel"  name = "{{displayConfig.name}}" class="input-area email-input" [autofocus]='true'/>
         </div>
-        <div *ngIf="displayConfig.isContinueVisible" class="continue-button continue-button-enabled" (click)="continueService(i)" >{{continueLabel}}</div>
-        </div>
+        
     </div>
-    <button *ngIf="isSubmitVisible" class="submit-button" type="submit" (click)="updateBg(BackgroundActionEnum.JOURNY_TO_PERSONAL_SPACE)">{{createAccountLabel}}</button>
+    <button class="submit-button" type="submit">{{inputComponentDataI?.createAccountLabel}}</button>
 </form>
 </div>
