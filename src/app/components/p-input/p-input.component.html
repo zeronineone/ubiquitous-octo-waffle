@@ -13,7 +13,7 @@
             <fa-icon *ngIf="displayConfig.inputStatus[0]" class="inout-fa-arrow-right-icon" [icon]="faArrowRight"></fa-icon>
             <fa-icon *ngIf="displayConfig.inputStatus[1]" class="inout-fa-check-icon" [icon]="faCheck"></fa-icon>
             <fa-icon *ngIf="displayConfig.inputStatus[2]" class="inout-fa-xmark-icon" [icon]="faXmark"></fa-icon>
-            <input type="{{displayConfig.type}}" ngModel #{{displayConfig.value}}="ngModel"  name = "{{displayConfig.name}}" class="input-area email-input"/>
+            <input type="{{displayConfig.type}}" ngModel #{{displayConfig.value}}="ngModel"  name = "{{displayConfig.name}}" class="input-area email-input" [autofocus]='true'/>
         </div>
         
     </div>

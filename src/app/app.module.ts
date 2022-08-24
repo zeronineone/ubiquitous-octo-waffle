@@ -19,6 +19,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { DynamicDirective } from './directive/dynamic.directive';
 import { LogoutComponent } from './components/logout/logout.component';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     NgParticlesModule,
     FontAwesomeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxGoogleAnalyticsModule.forRoot('G-ZFVEDRVTKD')
   ],
   //providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],

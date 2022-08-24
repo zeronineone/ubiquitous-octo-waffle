@@ -27,6 +27,7 @@
     "angular-cli-ghpages": "^0.1.0",
     "moment": "^2.29.4",
     "ng-particles": "^3.0.6",
+    "ngx-google-analytics": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "tsparticles": "^2.0.6",
