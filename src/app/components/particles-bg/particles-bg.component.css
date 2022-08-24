@@ -8,8 +8,13 @@
     flex-direction: column !important;
     background-color: #040d21;
     z-index: -2 !important;
+    align-items: center;
+    justify-content: center;
 }
-
+.rocket-gif{
+    height: 300px;
+    width: 300px;
+}
 .home-hero-glow {
     top: 50%;
     left: 50%;

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StatusType, UserType } from 'src/app/domains/config-objects';
+import { BgUpdateEvent, StatusType, UserType } from 'src/app/domains/config-objects';
 import { CreateCredentialsRequest } from 'src/app/domains/request-opjects';
 import { BlackHole, CredentialsResponse } from 'src/app/domains/response-opjects';
 import { InputServiceService } from 'src/app/services/input-service.service';
 import { SaveitService } from 'src/app/services/saveit.service';
+import { MoveDirection } from "tsparticles-engine";
 
 @Component({
   selector: 'app-credentials',
@@ -27,7 +28,6 @@ export class CredentialsComponent implements OnInit {
       console.log(value)
       this.captureDataFromInputCompotent(value);
        })
-       this.getCredentials();  
   }
   createCredentialsRequest : CreateCredentialsRequest | undefined
   captureDataFromInputCompotent(eventData : any){
@@ -38,6 +38,7 @@ export class CredentialsComponent implements OnInit {
       isdisplay : true,
       isinput : false
     }
+
   //  this.createUserRequest.useremail = eventData["useremail"]
  
   //  this.userDetailsService.createUser(this.createUserRequest)
@@ -89,6 +90,7 @@ export class CredentialsComponent implements OnInit {
       complete: () => console.info('complete') 
     })
   }
+  
   gotoSavveNewCredentials(){
     this.credConfig = {
       isdisplay : false,

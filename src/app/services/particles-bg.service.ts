@@ -17,6 +17,12 @@ export class ParticlesBgService {
    // this.znobg.particles.move = this.getDirectionalMove(MoveDirection.inside);
     return this.znobg;//default_theme;;
   }
+
+  getUserFormConfigs1(moveDirection : MoveDirection) : any{
+    this.znobg.particles.move = this.getDirectionalMove(moveDirection);
+   // this.znobg.particles.move = this.getDirectionalMove(MoveDirection.inside);
+    return this.znobg;//default_theme;;
+  }
   getCreateJournyConfigs() : any{
     return particlesTunnel;
   } 

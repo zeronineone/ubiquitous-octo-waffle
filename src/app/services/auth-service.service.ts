@@ -8,6 +8,8 @@ import { ApiService } from './api.service';
 import { OtpResponse, TokenResponse } from '../domains/response-opjects';
 import { Router } from '@angular/router';
 import { RoutingService } from './routing.service';
+import { MoveDirection } from 'tsparticles-engine';
+import { InputServiceService } from './input-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +20,16 @@ export class AuthServiceService {
     private localStorageService: LocalStorageService,
     private apiServiceOtp : ApiService<OtpResponse>,
     private apiServiceToken : ApiService<TokenResponse>,
-    private routingService : RoutingService) { }
+    private routingService : RoutingService,
+    private inputServiceService: InputServiceService) { }
 
 
   optResponse : OtpResponse | undefined;
   getOtp(email:string,router : Router){
-
+     this.inputServiceService.updateBackgroundSubject.next({
+      moveDirection : MoveDirection.bottomLeft,
+      isMoving : true
+     });
     const requestBody = {
       emailId: email,
       userType:UserType.ZNO_USER,
@@ -46,7 +52,12 @@ export class AuthServiceService {
         console.log(e);
         this.routingService.routeToLoginPage({},router) 
       },
-      complete: () => console.info('complete') 
+      complete: () => {console.info('complete') 
+      this.inputServiceService.updateBackgroundSubject.next({
+        moveDirection : MoveDirection.none,
+        isMoving : false
+       });
+    }
     })
   }
 

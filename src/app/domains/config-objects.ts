@@ -1,3 +1,5 @@
+import { MoveDirection } from "tsparticles-engine";
+
 export interface InputBlockConfig{
     name: string;
     label: string;
@@ -44,4 +46,8 @@ export interface UserAuth{
   token: string;
   userType: UserType;
   expiresAt: Number;
+}
+export interface BgUpdateEvent{
+  moveDirection : MoveDirection;
+  isMoving:boolean
 }

@@ -7,8 +7,10 @@ import { particlesTunnel } from 'src/app/particles-config/backgrounds/particles-
 import { NgParticlesComponent } from 'ng-particles';
 import { ParticlesBgService } from 'src/app/services/particles-bg.service';
 import { faL } from '@fortawesome/free-solid-svg-icons';
-import { BackgroundAction } from 'src/app/domains/config-objects';
+import { BackgroundAction, BgUpdateEvent } from 'src/app/domains/config-objects';
 import { Subject } from 'rxjs/internal/Subject';
+import { InputServiceService } from 'src/app/services/input-service.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-particles-bg',
@@ -19,18 +21,42 @@ export class ParticlesBgComponent implements OnInit {
   //@Input() backgroundActionType: Subject<BackgroundAction> | undefined ;
   userFormId = "tsparticles-user-form";
   createJourneyId = "tsparticles-create-journey";
-  userForm = true;
-  createJourney = false;
- 
+  bgCanvas = {
+    cavasOne : true,
+    cavasTwo : false,
+  }
+  isLoadingMode = false
+  bgZindex = '-2!important';
   particlesOptions : any | undefined;
-  constructor(private particlesBgService: ParticlesBgService) { 
-    this.particlesOptions = particlesBgService.getUserFormConfigs();
+  constructor(private particlesBgService: ParticlesBgService,private inputServiceService : InputServiceService, private localStorageService : LocalStorageService) { 
+   
   }
 
 
 
   ngOnInit(): void {
+  //  this.particlesOptions = this.particlesBgService.getUserFormConfigs1(MoveDirection.bottomLeft);
   
+  let bgUpdateEvent = this.localStorageService.get('bgUpdateEvent') ;
+  let eventData: BgUpdateEvent
+  if(bgUpdateEvent != null && bgUpdateEvent != undefined){
+     eventData = JSON.parse(bgUpdateEvent)
+     if(eventData.isMoving){
+      this.isLoadingMode = true;
+      this.particlesOptions = this.particlesBgService.getUserFormConfigs1(eventData.moveDirection);
+      this.bgZindex = '2!important';
+    }else {
+      this.isLoadingMode = false;
+      this.particlesOptions = this.particlesBgService.getUserFormConfigs();
+      this.bgZindex = '-2!important';
+     
+    }
+  }else{
+    this.isLoadingMode = false;
+    this.particlesOptions = this.particlesBgService.getUserFormConfigs();
+    this.bgZindex = '-2!important';
+  }
+  this.localStorageService.remove('bgUpdateEvent');
   }
   
   particlesLoaded(container: Container): void {
@@ -49,19 +75,21 @@ export class ParticlesBgComponent implements OnInit {
 
 
 
-updateBgEvent(backgroundAction : BackgroundAction){
-  console.log("particles comp this.backgroundAction "+backgroundAction)  
+updateBgEvent(eventData : BgUpdateEvent){
+  console.log("particles comp this.backgroundAction ",eventData)  
   console.log("----");
-  
-  if(backgroundAction == BackgroundAction.SIGNUP){
-    this.particlesOptions= this.particlesBgService.getUserFormConfigs();
-  }else if(backgroundAction == BackgroundAction.JOURNY_TO_PERSONAL_SPACE){
-    this.particlesOptions= this.particlesBgService.getCreateJournyConfigs();
-  }else if(backgroundAction == BackgroundAction.PERSONAL_SPACE){
-    this.particlesOptions= this.particlesBgService.getMySpaceConfigs();
+ 
+  if(eventData.isMoving){
+    this.particlesOptions = this.particlesBgService.getUserFormConfigs1(eventData.moveDirection);
+    this.bgZindex = '2!important';
+  }else {
+    this.particlesOptions = this.particlesBgService.getUserFormConfigs();
+    this.bgZindex = '-2!important';
+   
   }
-  this.userForm = !this.userForm;
-  this.createJourney = !this.createJourney;
+  this.ngOnInit();
+  this.bgCanvas.cavasOne = !this.bgCanvas.cavasOne;
+  this.bgCanvas.cavasTwo = !this.bgCanvas.cavasTwo;
 }
 
 }

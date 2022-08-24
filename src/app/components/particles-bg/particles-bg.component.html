@@ -1,7 +1,6 @@
-<div class="particles-bg-container" >
+<div class="particles-bg-container" [style.z-index]="bgZindex">
     <img src="../../../assets/images/pensieve_gradeint.svg" alt="Glowing universe" class="js-warp-hide position-absolute overflow-hidden home-hero-glow events-none">
-    <ng-particles  *ngIf = "userForm" [id]="userFormId" [options]="particlesOptions" [particlesInit]="particlesInit"
+    <ng-particles [id]="userFormId" [options]="particlesOptions" [particlesInit]="particlesInit"
     (particlesLoaded)="particlesLoaded($event)"></ng-particles>
-    <ng-particles  *ngIf = "createJourney" [id]="createJourneyId" [options]="particlesOptions" [particlesInit]="particlesInit"
-    (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+    <img *ngIf="isLoadingMode" class="rocket-gif" alt="" src="../../../assets/images/rocketgifyOne.gif">
 </div>
